@@ -7,7 +7,7 @@ use App\Models\Commandes;
 use App\Models\Menu;
 use illuminate\Support\Facades\DB;
 
-class Commande_menuController extends Controller
+class CommandeMenuController extends Controller
 {
     /**
      * Afficher tous les menus d’une commande

@@ -30,15 +30,21 @@ class UserController extends Controller
             'mot_de_passe' => 'required|string|min:6',
         ]);
 
+    
+
         $user = User::create([
-            'nom' => $request->name,
+            'nom' => $request->nom,
             'prenom' => $request->prenom,
             'telephone' => $request->telephone,
             'email' => $request->email,
             'mot_de_passe' => Hash::make($request->password),
         ]);
+        return response()->json([
+            'success' => true,
+            'message' => 'Utilisateur créé'
+        ], 201);
 
-        return response()->json(['message' => 'Utilisateur créé', 'user' => $user], 201);
+    
     }
 
     /**
@@ -71,9 +77,12 @@ class UserController extends Controller
             'mot_de_passe' => 'nullable|string|min:6',
         ]);
 
-        if ($request->name) $user->name = $request->name;
+        if ($request->nom) $user->nom = $request->nom;
+        if ($request->prenom) $user->prenom = $request->prenom;
         if ($request->email) $user->email = $request->email;
         if ($request->password) $user->password = Hash::make($request->password);
+        if ($request->mot_de_passe) $user->mot_de_passe = Hash::make($request->mot_de_passe);
+        if ($request->telephone) $user->telephone = $request->telephone;
 
         $user->save();
 

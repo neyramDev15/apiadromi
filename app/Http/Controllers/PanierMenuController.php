@@ -8,7 +8,7 @@ use App\Models\Menu;
 use Illuminate\Support\Facades\DB;
 
 
-class Panier_menuController extends Controller
+class PanierMenuController extends Controller
 {
     /**
      * Afficher les menus dans un panier

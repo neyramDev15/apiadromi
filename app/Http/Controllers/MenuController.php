@@ -15,37 +15,42 @@ class MenuController extends Controller
     {
         //with permet de recuperer les categories de chaq menu
          $menus = Menu::with('categories')->get();
-       return reponse()->json([
+       return response()->json([
         'success' => true,
         'data' => $menus
        ]) ;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Store the form for creating a new resource.
      */
-    public function create()
+    public function store(Request $request)
     {
+        $request->validate([
+            'categorie_id' => 'required|exists:categories,id',
+            'nom' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'image' => 'required|string|max:255',
+            'prix' => 'required|string|max:20',
+        ]);
+
         
         $menus = Menu::create([
+            'categorie_id' => $request->categorie_id,
             'nom' => $request->nom,
             'description' => $request->description,
-            'iamge' => $request->image,
+            'image' => $request->image,
             'prix' => $request->prix,
         ]);
-        return reponse()->json([
+        return response()->json([
             'success' => true,
+            'message' => 'menu creer',
             'data' => $menus
            ]) ;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        
-    }
+   
+    
 
     /**
      * Display the specified resource.
@@ -54,12 +59,12 @@ class MenuController extends Controller
     {
          $menu =Menu::with('categories')->find($id);
         if(!$menu){
-            return reponse()->json([
+            return response()->json([
                 'success' => false,
                 'message' => 'Menu introuvable'
-               ],404) ;
+               ]) ;
         }   
-        return reponse()->json([
+        return response()->json([
             'success' => true,
             'data' => $menu
            ]) ; 
@@ -80,20 +85,21 @@ class MenuController extends Controller
     {
           $menu = Menu::find($id);
         if(!$menu){
-            return reponse()->json([
+            return response()->json([
                 'success' => false,
                 'message' => 'Menu introuvable'
                ],404) ;
         }
         //validation
         $request->validate([
+    
             'nom' => 'required|string|max:255',
             'description' => 'nullable|string',
             'image' => 'nullable|string',
             'prix' => 'required|numeric',
         ]);
         $menu->update($request->all());
-        return reponse()->json([
+        return response()->json([
             'success' => true,
             'data' => $menu
            ]) ;
@@ -106,13 +112,13 @@ class MenuController extends Controller
     {
          $menu = Menu::find($id);
         if(!$menu){
-            return reponse()->json([
+            return response()->json([
                 'success' => false,
                 'message' => 'Menu introuvable'
                ],404) ;
         }
         $menu->delete();
-        return reponse()->json([
+        return response()->json([
             'success' => true,
             'message' => 'Menu supprimé avec succès'
            ]) ;

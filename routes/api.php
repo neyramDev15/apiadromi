@@ -20,11 +20,11 @@ Route::get('users/{id}', [UserController::class, 'show']);
 Route::put('users/{id}', [UserController::class, 'update']);
 Route::delete('users/{id}', [UserController::class, 'destroy']);
 
-Route::get('admins', [AdminController::class, 'index']);
-Route::post('admins', [AdminController::class, 'store']);
-Route::get('admins/{id}', [AdminController::class, 'show']);
-Route::put('admins/{id}', [AdminController::class, 'update']);
-Route::delete('admins/{id}', [AdminController::class, 'destroy']);
+Route::get('get_all_admins', [AdminController::class, 'index']);
+Route::post('add_admins', [AdminController::class, 'store']);
+Route::get('get_admins/{id}', [AdminController::class, 'show']);
+Route::put('edit_admins/{id}', [AdminController::class, 'update']);
+Route::delete('delete_admins/{id}', [AdminController::class, 'destroy']);
 
 
 Route::get('panier/{id}/menus', [PanierMenuController::class, 'index']);
@@ -77,7 +77,7 @@ Route::apiResource('menus', MenuController::class);
 Route::apiResource('commandes', CommandeController::class);
 Route::apiResource('paiements', PaiementController::class);
 Route::apiResource('admins', AdminController::class);
-Route::apiResource('users', ClientController::class);
+Route::apiResource('users', UserController::class);
 Route::apiResource('paniers', PanierController::class);
 route::apiResource('paiements', PaiementController::class);
 Route::apiResource('panier-menu', PanierMenuController::class)->only(['store','update','destroy','index']);

@@ -93,10 +93,14 @@ class AdminController extends Controller
     {
         $admin = Admin::find($id);
         if (!$admin) {
-            return response()->json(['message' => 'Admin non trouvé'], 404);
+            return response()->json([
+                'succes'=>false,
+                'message' => 'Admin non trouvé']);
         }
 
         $admin->delete();
-        return response()->json(['message' => 'Admin supprimé']);
+        return response()->json([
+            'success'=>true,
+            'message' => 'Admin supprimé']);
     }
 }

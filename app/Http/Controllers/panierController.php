@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Panier;
 use App\Models\Menu;
 use Illuminate\Http\Request;
@@ -29,7 +30,7 @@ class PanierController extends Controller
     /**
      * Ajouter un menu au panier.
      */
-    public function add(Request $request)
+    /*public function store(Request $request)
     {
         $request->validate([
             'user_id' => 'required|exists:users,id',
@@ -39,6 +40,7 @@ class PanierController extends Controller
         // Récupérer le panier de l'utilisateur ou le créer
         $panier = Panier::firstOrCreate([
             'user_id' => $request->user_id,
+            'menu_id' => $request->menu_id
         ]);
 
         // Attacher le menu dans la table pivot
@@ -48,6 +50,51 @@ class PanierController extends Controller
             'message' => 'Menu ajouté au panier',
             'panier' => $panier->load('menus')
         ], 201);
+    }*/
+
+    public function show($id)
+    {
+        $panier = Panier::find($id);
+        if (!$panier) {
+            return response()->json(['message' => 'Panier vide']);
+        }
+        return response()->json($panier);
+    }
+
+    public function store(Request $request)
+{
+    $request->validate([
+        'user_id' => 'required|exists:users,id',
+        /*'menu_id' => 'required|exists:menu,id',
+        'status' => 'required|exists:status,id',
+        'total' => 'required|exists:total'*/
+    ]);
+
+    // Vérifier si ce menu est déjà dans le panier de cet utilisateur
+    $ligne = Panier::where('user_id', $request->user_id)
+                   ->where('menu_id', $request->menu_id)
+                   ->first();
+                   $panier=panier::firstOrCreate(['user_id' =>$request->user_id]);
+                    // Vérifier si le menu existe déjà
+                    $existant = $panier->menus()->where('menu_id', $request->menu_id)->first();
+
+
+
+     if ($existant) {
+            // Augmenter la quantité
+            $panier->menus()->updateExistingPivot($request->menu_id, [
+                'quantite' => $existant->pivot->quantite + $request->quantite
+            ]);
+        } else {
+            // Ajouter un nouveau menu
+            $panier->menus()->attach($request->menu_id, [
+                'quantite' => $request->quantite
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Menu ajouté', 
+            'panier' => $panier->load('menus')]);
     }
 
 
