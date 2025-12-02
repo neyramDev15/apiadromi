@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Panier extends Model
 {
+    use HasFactory;
+    
     protected $fillable = [
         'user_id',
-        /*'status',
-        'total',*/
+        'statut',
+        'total',
+        'date_creation',
+        'date_validation',
     ];
     public function user()
     {

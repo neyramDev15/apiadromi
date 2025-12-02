@@ -1,0 +1,1335 @@
+type: collection.insomnia.rest/5.0
+name: Apiadromi API Collection
+meta:
+  id: wrk_f4c4146f38614f76b5b767e5451d6fa8
+  created: 1764638080754
+  modified: 1764638080754
+  description: ""
+collection:
+  - name: Apiadromi API Collection
+    meta:
+      id: fld_2fe162d5a7a740858c02c5d0ba0162e4
+      created: 1764638080764
+      modified: 1764638080764
+      sortKey: -1764638073684
+      description: Collection complète des endpoints API pour le projet Apiadromi
+    children:
+      - name: Users
+        meta:
+          id: fld_1af5c19659e94a868fce17eaaa105b41
+          created: 1764638080773
+          modified: 1764638080773
+          sortKey: -1764638073682
+          description: ""
+        children:
+          - url: "{{base_url}}/api/get_all_users"
+            name: Get All Users
+            meta:
+              id: req_b6448fc2f248467787cc775a6f11eb8c
+              created: 1764638080775
+              modified: 1764638080775
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073681
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/add_user"
+            name: Add User
+            meta:
+              id: req_cac7efafd25a409d93c70cf924bebd52
+              created: 1764638080777
+              modified: 1764638080777
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073680
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "nom": "Doe",
+                  "prenom": "John",
+                  "telephone": "70658846",
+                  "email": "john.doe@example.com",
+                  "mot_de_passe": "password123"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/get_user/1"
+            name: Get User
+            meta:
+              id: req_31331d73202444a788ce31c5b54f1400
+              created: 1764638080778
+              modified: 1764638080778
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073679
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/edit_user/1"
+            name: Edit User
+            meta:
+              id: req_28f0b9c77f0847458f9ff5bf4d586bee
+              created: 1764638080780
+              modified: 1764638080780
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073678
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "nom": "Smith",
+                  "prenom": "Jane",
+                  "telephone": "70123456",
+                  "email": "jane.smith@example.com"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/delete_user/1"
+            name: Delete User
+            meta:
+              id: req_a0accd46855442b88579431addc48580
+              created: 1764638080785
+              modified: 1764638080785
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073677
+            method: DELETE
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Admins
+        meta:
+          id: fld_f12e8b93d4db46efb83e97d85baa4e9c
+          created: 1764638080800
+          modified: 1764638080800
+          sortKey: -1764638073676
+          description: ""
+        children:
+          - url: "{{base_url}}/api/get_all_admins"
+            name: Get All Admins
+            meta:
+              id: req_eb6afaa9fe3741c090be517e774d0e68
+              created: 1764638080806
+              modified: 1764638080806
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073675
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/add_admin"
+            name: Add Admin
+            meta:
+              id: req_cd2bc6f01a54462eaf01dfc45e6bca25
+              created: 1764638080811
+              modified: 1764638080811
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073674
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "nom": "Admin",
+                  "prenom": "Super",
+                  "email": "admin@apiadromi.com",
+                  "mot_de_passe": "admin123",
+                  "role": "gestionnaire",
+                  "telephone": "70658846"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/get_admin/1"
+            name: Get Admin
+            meta:
+              id: req_b9ab0c3fd21c49afaf1087cc42c17df2
+              created: 1764638080817
+              modified: 1764638080817
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073673
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/edit_admin/1"
+            name: Edit Admin
+            meta:
+              id: req_46847e72574d4a9ba6f6e0b5a9982b58
+              created: 1764638080822
+              modified: 1764638080822
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073672
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "nom": "Admin",
+                  "prenom": "Updated",
+                  "role": "super_admin"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/delete_admin/1"
+            name: Delete Admin
+            meta:
+              id: req_b6153c5f35a64c4a842eeba4abfa4ca2
+              created: 1764638080877
+              modified: 1764638080877
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073671
+            method: DELETE
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Categories
+        meta:
+          id: fld_8f4eb8ef5f75439bb0a69e00ed618c6b
+          created: 1764638080881
+          modified: 1764638080881
+          sortKey: -1764638073670
+          description: ""
+        children:
+          - url: "{{base_url}}/api/get_all_categories"
+            name: Get All Categories
+            meta:
+              id: req_811c31eff34641c8a801f5b95608b538
+              created: 1764638080883
+              modified: 1764638080883
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073669
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/add_categorie"
+            name: Add Categorie
+            meta:
+              id: req_616a727156d248d4959a7f5fd02a342b
+              created: 1764638080885
+              modified: 1764638080885
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073668
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "nom": "Plats principaux",
+                  "description": "Nos délicieux plats principaux"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/get_categorie/1"
+            name: Get Categorie
+            meta:
+              id: req_93a7e5b9d1494f95a45a4fb445e7b320
+              created: 1764638080888
+              modified: 1764638080888
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073667
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/edit_categorie/1"
+            name: Edit Categorie
+            meta:
+              id: req_ae5b4a0ccba7453a950cef618a5437e6
+              created: 1764638080890
+              modified: 1764638080890
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073666
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "nom": "Entrées",
+                  "description": "Nos savoureuses entrées"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/delete_categorie/1"
+            name: Delete Categorie
+            meta:
+              id: req_9165f45f7ecf448daa4c0cbf530f8468
+              created: 1764638080892
+              modified: 1764638080892
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073665
+            method: DELETE
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Menus
+        meta:
+          id: fld_627d8a0fed4b4b4fbe7674f7c72d2c91
+          created: 1764638080894
+          modified: 1764638080894
+          sortKey: -1764638073664
+          description: ""
+        children:
+          - url: "{{base_url}}/api/get_all_menus"
+            name: Get All Menus
+            meta:
+              id: req_d3b7834cb63245c086186adcde7d3964
+              created: 1764638080896
+              modified: 1764638080896
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073663
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/add_menu"
+            name: Add Menu
+            meta:
+              id: req_7716f0c0e3414dd9ba09523d534d56cb
+              created: 1764638080898
+              modified: 1764640560990
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073662
+            method: POST
+            body:
+              mimeType: text/plain
+              text: >-
+                {
+                  "categorie_id": 1,
+                  "nom": "Pizza Margherita22",
+                  "description": "Pizza classique avec tomate, mozzarella et basilic",
+                  "image": "https://example.com/pizza.jpg",
+                  "prix": 12.50
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/get_menu/1"
+            name: Get Menu
+            meta:
+              id: req_40e4d896fdff4d9a88c6c38e1175fce7
+              created: 1764638080900
+              modified: 1764638080900
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073661
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/edit_menu/1"
+            name: Edit Menu
+            meta:
+              id: req_04fcdb0a85884de6814ab8cd0312c016
+              created: 1764638080902
+              modified: 1764638080902
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073660
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "nom": "Pizza Margherita Deluxe",
+                  "prix": 15.00
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/delete_menu/1"
+            name: Delete Menu
+            meta:
+              id: req_ef3fb612882c43f2aa926d2e6e107404
+              created: 1764638080904
+              modified: 1764638080904
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073659
+            method: DELETE
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Commandes
+        meta:
+          id: fld_957dbffadd96425281e373a73f370134
+          created: 1764638080906
+          modified: 1764638080906
+          sortKey: -1764638073658
+          description: ""
+        children:
+          - url: "{{base_url}}/api/get_all_commandes"
+            name: Get All Commandes
+            meta:
+              id: req_eb3eff9cea8d45f09ef06e277e476b9d
+              created: 1764638080907
+              modified: 1764638080907
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073657
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/add_commande"
+            name: Add Commande
+            meta:
+              id: req_68c99e27a85a42ba948001854f0a0364
+              created: 1764638080909
+              modified: 1764638080909
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073656
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "user_id": 1,
+                  "menus": [
+                    {
+                      "menu_id": 1,
+                      "quantite": 2
+                    },
+                    {
+                      "menu_id": 2,
+                      "quantite": 1
+                    }
+                  ]
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/get_commande/1"
+            name: Get Commande
+            meta:
+              id: req_45f17a00b8ad459284a8566197cefe41
+              created: 1764638080911
+              modified: 1764638080911
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073655
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/edit_commande/1"
+            name: Edit Commande
+            meta:
+              id: req_a39b9b06941f4a80b878055a3c6ceddc
+              created: 1764638080912
+              modified: 1764638080912
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073654
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "status": "en cours"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/delete_commande/1"
+            name: Delete Commande
+            meta:
+              id: req_3c20d8ddb0004e868ef1c3e1c3c3d12f
+              created: 1764638080914
+              modified: 1764638080914
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073653
+            method: DELETE
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Paniers
+        meta:
+          id: fld_96a634afa207466884f2e5424f80a181
+          created: 1764638080915
+          modified: 1764638080915
+          sortKey: -1764638073652
+          description: ""
+        children:
+          - url: "{{base_url}}/api/get_all_paniers"
+            name: Get All Paniers
+            meta:
+              id: req_d980b135e66e4584a9557233dc58c14f
+              created: 1764638080917
+              modified: 1764638080917
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073651
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/add_panier"
+            name: Add Panier
+            meta:
+              id: req_c9a544d254ac413bb9d379ae4a539343
+              created: 1764638080918
+              modified: 1764638080918
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073650
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "user_id": 1,
+                  "menu_id": 1,
+                  "quantite": 2
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/get_panier/2"
+            name: Get Panier
+            meta:
+              id: req_f5ca2b30e3114e88b65ded805a48e913
+              created: 1764638080919
+              modified: 1764640610983
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073649
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/edit_panier/1"
+            name: Edit Panier
+            meta:
+              id: req_d7a3d45f49e64b98bce8d82a8cc7cdc8
+              created: 1764638080921
+              modified: 1764638080921
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073648
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "user_id": 2
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/delete_panier/1"
+            name: Delete Panier
+            meta:
+              id: req_e13d4c133099428abbd2d24d75e4facd
+              created: 1764638080923
+              modified: 1764638080923
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073647
+            method: DELETE
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/add_panier"
+            name: Add Panier multi
+            meta:
+              id: req_8893bfe9e81c4fa6b3aa0031bd3cf80b
+              created: 1764640506898
+              modified: 1764640519516
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073649.5
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "user_id": 1,
+                  "menus": [
+                    {
+                      "menu_id": 1,
+                      "quantite": 2
+                    },
+                    {
+                      "menu_id": 2,
+                      "quantite": 1
+                    },
+                    {
+                      "menu_id": 3,
+                      "quantite": 3
+                    }
+                  ]
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Paiements
+        meta:
+          id: fld_5e528c70572441d997afd35cc249f0d4
+          created: 1764638080924
+          modified: 1764638080924
+          sortKey: -1764638073646
+          description: ""
+        children:
+          - url: "{{base_url}}/api/get_all_paiements"
+            name: Get All Paiements
+            meta:
+              id: req_5e7579bedec54204b744e465fe08f9c1
+              created: 1764638080926
+              modified: 1764638080926
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073645
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/add_paiement"
+            name: Add Paiement
+            meta:
+              id: req_56c55938797d4821a0a8387b8ec3db29
+              created: 1764638080927
+              modified: 1764638080927
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073644
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "commande_id": 1,
+                  "montant": 25.50,
+                  "methode_paiement": "carte_bancaire",
+                  "status": "en_attente"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/get_paiement/1"
+            name: Get Paiement
+            meta:
+              id: req_63b5e7b5529a4027b3e6818477b35b00
+              created: 1764638080929
+              modified: 1764638080929
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073643
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/edit_paiement/1"
+            name: Edit Paiement
+            meta:
+              id: req_f6290330bf3845a4bbe2adbbe894331e
+              created: 1764638080930
+              modified: 1764638080930
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073642
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "status": "valide"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/delete_paiement/1"
+            name: Delete Paiement
+            meta:
+              id: req_9bf18f60d13e459a84788ffcd35247a6
+              created: 1764638080931
+              modified: 1764638080931
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073641
+            method: DELETE
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Panier-Menu Relations
+        meta:
+          id: fld_b709bf1dd95440379ddfc674f05c27cf
+          created: 1764638080933
+          modified: 1764638080933
+          sortKey: -1764638073640
+          description: ""
+        children:
+          - url: "{{base_url}}/api/get_panier_menus/2"
+            name: Get Panier Menus
+            meta:
+              id: req_09c7cd5b80964f8ebf0da86935a602df
+              created: 1764638080934
+              modified: 1764640819751
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073639
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/add_menu_to_panier"
+            name: Add Menu to Panier
+            meta:
+              id: req_dfdab4c34c8442bf8728e04bab341bf4
+              created: 1764638080935
+              modified: 1764640891985
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073638
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "panier_id": 2,
+                  "menu_id": 2,
+                  "quantite": 2
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/edit_panier_menu/1"
+            name: Edit Panier Menu
+            meta:
+              id: req_a549a16105a74ca3a6cc0f543f9655bf
+              created: 1764638080937
+              modified: 1764638080937
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073637
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "quantite": 3
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/remove_menu_from_panier_by_ids"
+            name: Remove Menu from Panier by ids
+            meta:
+              id: req_d95e21a2c63047be8470e6df47f8ac4f
+              created: 1764641109089
+              modified: 1764641153744
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073635
+            method: DELETE
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                  "panier_id": 2,
+                  "menu_id": 3
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - name: Commande-Menu Relations
+        meta:
+          id: fld_29b2603e2fdb4dc59b4191073f85eeaa
+          created: 1764638080942
+          modified: 1764638080942
+          sortKey: -1764638073635
+          description: ""
+        children:
+          - url: "{{base_url}}/api/get_commande_menus/2"
+            name: Get Commande Menus
+            meta:
+              id: req_2c163283127643d9b5b1d42dd3dfe91d
+              created: 1764638080944
+              modified: 1764641434098
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073634
+            method: GET
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/add_menu_to_commande"
+            name: Add Menu to Commande
+            meta:
+              id: req_fc819eaccfa1446e9f18819f13f591c7
+              created: 1764638080945
+              modified: 1764638080945
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073633
+            method: POST
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "commande_id": 1,
+                  "menu_id": 1,
+                  "quantite": 2
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/edit_commande_menu/1"
+            name: Edit Commande Menu
+            meta:
+              id: req_7b1339e1db3d42c6a7ff30c0d88ca37f
+              created: 1764638080947
+              modified: 1764638080947
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073632
+            method: PUT
+            body:
+              mimeType: text/plain
+              text: |-
+                {
+                  "quantite": 3
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{base_url}}/api/remove_menu_from_commande/1"
+            name: Remove Menu from Commande
+            meta:
+              id: req_1394ba72d43e46fdb39e0f38b5b67a31
+              created: 1764638080948
+              modified: 1764638080948
+              isPrivate: false
+              description: ""
+              sortKey: -1764638073631
+            method: DELETE
+            scripts:
+              preRequest: ""
+              afterResponse: ""
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+        scripts:
+          afterResponse: ""
+          preRequest: ""
+      - url: "{{base_url}}/api/test"
+        name: Server Test
+        meta:
+          id: req_e368ce116f9947cea1ef72783791d6ac
+          created: 1764638080766
+          modified: 1764638080766
+          isPrivate: false
+          description: Test de connexion au serveur
+          sortKey: -1764638073683
+        method: GET
+        scripts:
+          preRequest: ""
+          afterResponse: ""
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    scripts:
+      afterResponse: ""
+      preRequest: ""
+    environment:
+      base_url: http://127.0.0.1:8000
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_7f4913cb5877b5c93515d3af965cb5c8bb2155c2
+    created: 1764638080956
+    modified: 1764640635211
+  cookies:
+    - key: XSRF-TOKEN
+      value: eyJpdiI6InNDR3dxUGpZamlsM0Y0Z3ZONkNNa3c9PSIsInZhbHVlIjoiczVkNEQ3OTF1dTdQZzhkSFFlTXVEREdydE5mKzliRWpiR3Z4Y2hWUVJtL3NVVVFSWHNnUTNHL0x3R3hyNXByamFMdkNUYWJWbGRtbVR3TWkrRG1BNzBqSHBnUVJRZnNoSHpCN3ZNaDh1Ymkzb3M0eitkYVJnSmZwdEJBaXlUdlYiLCJtYWMiOiI4YmIxZTg0NzIyNWZiNmQ5OTlhMWEzZjZlOWYzZmUxNmI3N2ZlODljNTExNjUwMzI5NmUxMmUxZGNlZGQ3MmU1IiwidGFnIjoiIn0%3D
+      maxAge: 7200
+      domain: 127.0.0.1
+      path: /
+      hostOnly: true
+      creation: 2025-12-02T01:19:16.153Z
+      lastAccessed: 2025-12-02T01:57:15.210Z
+      sameSite: lax
+      id: 339bc60a-5572-444e-94ab-98759839ece7
+    - key: laravel-session
+      value: eyJpdiI6ImVvL2NYZXRiLzg0TTVTZzdUeXBNRHc9PSIsInZhbHVlIjoiWFZVT1pPcXA4YlZ4b1ZCakxpSlRGT3dDN1hYZTBzSE44aWRldWk3UzNLZDl4dGhxSE8rT3JJRXg2aGFwY2dKVTI4QW5oV3FIV0ZsclVYd3A1bXpqeUMxd0dNNDMzNlpFRlRWS0U4KzBadWhXMVY4ejVoZzBxK3paY2o4Y3Q0Z00iLCJtYWMiOiJmNTk4MGFhYWY1MTgwODdmN2U4MTUwMWI1NjYzNDAxODI3MTllNzEyMDVmNmIxYWVkY2IwZmE1NzIyYTg0NjM4IiwidGFnIjoiIn0%3D
+      maxAge: 7200
+      domain: 127.0.0.1
+      path: /
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-12-02T01:19:16.155Z
+      lastAccessed: 2025-12-02T01:57:15.210Z
+      sameSite: lax
+      id: 0ee29169-63df-4cfb-aef1-a961df3482e4
+environments:
+  name: Base Environment
+  meta:
+    id: env_7f4913cb5877b5c93515d3af965cb5c8bb2155c2
+    created: 1764638080950
+    modified: 1764638127168
+    isPrivate: false

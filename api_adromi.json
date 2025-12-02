@@ -1,0 +1,753 @@
+{
+  "info": {
+    "name": "Apiadromi API Collection",
+    "description": "Collection complète des endpoints API pour le projet Apiadromi",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Server Test",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/test",
+          "host": ["{{base_url}}"],
+          "path": ["api", "test"]
+        },
+        "description": "Test de connexion au serveur"
+      }
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_all_users",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_all_users"]
+            }
+          }
+        },
+        {
+          "name": "Add User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Doe\",\n  \"prenom\": \"John\",\n  \"telephone\": \"70658846\",\n  \"email\": \"john.doe@example.com\",\n  \"mot_de_passe\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/add_user",
+              "host": ["{{base_url}}"],
+              "path": ["api", "add_user"]
+            }
+          }
+        },
+        {
+          "name": "Get User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_user/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_user", "1"]
+            }
+          }
+        },
+        {
+          "name": "Edit User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Smith\",\n  \"prenom\": \"Jane\",\n  \"telephone\": \"70123456\",\n  \"email\": \"jane.smith@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/edit_user/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "edit_user", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/delete_user/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "delete_user", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admins",
+      "item": [
+        {
+          "name": "Get All Admins",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_all_admins",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_all_admins"]
+            }
+          }
+        },
+        {
+          "name": "Add Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Admin\",\n  \"prenom\": \"Super\",\n  \"email\": \"admin@apiadromi.com\",\n  \"mot_de_passe\": \"admin123\",\n  \"role\": \"gestionnaire\",\n  \"telephone\": \"70658846\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/add_admin",
+              "host": ["{{base_url}}"],
+              "path": ["api", "add_admin"]
+            }
+          }
+        },
+        {
+          "name": "Get Admin",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_admin/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_admin", "1"]
+            }
+          }
+        },
+        {
+          "name": "Edit Admin",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Admin\",\n  \"prenom\": \"Updated\",\n  \"role\": \"super_admin\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/edit_admin/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "edit_admin", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Admin",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/delete_admin/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "delete_admin", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Categories",
+      "item": [
+        {
+          "name": "Get All Categories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_all_categories",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_all_categories"]
+            }
+          }
+        },
+        {
+          "name": "Add Categorie",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Plats principaux\",\n  \"description\": \"Nos délicieux plats principaux\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/add_categorie",
+              "host": ["{{base_url}}"],
+              "path": ["api", "add_categorie"]
+            }
+          }
+        },
+        {
+          "name": "Get Categorie",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_categorie/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_categorie", "1"]
+            }
+          }
+        },
+        {
+          "name": "Edit Categorie",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Entrées\",\n  \"description\": \"Nos savoureuses entrées\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/edit_categorie/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "edit_categorie", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Categorie",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/delete_categorie/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "delete_categorie", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Menus",
+      "item": [
+        {
+          "name": "Get All Menus",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_all_menus",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_all_menus"]
+            }
+          }
+        },
+        {
+          "name": "Add Menu",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"categorie_id\": 1,\n  \"nom\": \"Pizza Margherita\",\n  \"description\": \"Pizza classique avec tomate, mozzarella et basilic\",\n  \"image\": \"https://example.com/pizza.jpg\",\n  \"prix\": 12.50\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/add_menu",
+              "host": ["{{base_url}}"],
+              "path": ["api", "add_menu"]
+            }
+          }
+        },
+        {
+          "name": "Get Menu",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_menu/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_menu", "1"]
+            }
+          }
+        },
+        {
+          "name": "Edit Menu",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nom\": \"Pizza Margherita Deluxe\",\n  \"prix\": 15.00\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/edit_menu/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "edit_menu", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Menu",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/delete_menu/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "delete_menu", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Commandes",
+      "item": [
+        {
+          "name": "Get All Commandes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_all_commandes",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_all_commandes"]
+            }
+          }
+        },
+        {
+          "name": "Add Commande",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"menus\": [\n    {\n      \"menu_id\": 1,\n      \"quantite\": 2\n    },\n    {\n      \"menu_id\": 2,\n      \"quantite\": 1\n    }\n  ]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/add_commande",
+              "host": ["{{base_url}}"],
+              "path": ["api", "add_commande"]
+            }
+          }
+        },
+        {
+          "name": "Get Commande",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_commande/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_commande", "1"]
+            }
+          }
+        },
+        {
+          "name": "Edit Commande",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"statut\": \"en cours\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/edit_commande/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "edit_commande", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Commande",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/delete_commande/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "delete_commande", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Paniers",
+      "item": [
+        {
+          "name": "Get All Paniers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_all_paniers",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_all_paniers"]
+            }
+          }
+        },
+        {
+          "name": "Add Panier",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1,\n  \"menu_id\": 1,\n  \"quantite\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/add_panier",
+              "host": ["{{base_url}}"],
+              "path": ["api", "add_panier"]
+            }
+          }
+        },
+        {
+          "name": "Get Panier",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_panier/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_panier", "1"]
+            }
+          }
+        },
+        {
+          "name": "Edit Panier",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/edit_panier/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "edit_panier", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Panier",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/delete_panier/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "delete_panier", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Paiements",
+      "item": [
+        {
+          "name": "Get All Paiements",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_all_paiements",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_all_paiements"]
+            }
+          }
+        },
+        {
+          "name": "Add Paiement",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"commande_id\": 1,\n  \"montant\": 25.50,\n  \"methode_paiement\": \"carte_bancaire\",\n  \"status\": \"en_attente\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/add_paiement",
+              "host": ["{{base_url}}"],
+              "path": ["api", "add_paiement"]
+            }
+          }
+        },
+        {
+          "name": "Get Paiement",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_paiement/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_paiement", "1"]
+            }
+          }
+        },
+        {
+          "name": "Edit Paiement",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"valide\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/edit_paiement/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "edit_paiement", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Paiement",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/delete_paiement/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "delete_paiement", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Panier-Menu Relations",
+      "item": [
+        {
+          "name": "Get Panier Menus",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_panier_menus/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_panier_menus", "1"]
+            }
+          }
+        },
+        {
+          "name": "Add Menu to Panier",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"panier_id\": 1,\n  \"menu_id\": 1,\n  \"quantite\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/add_menu_to_panier",
+              "host": ["{{base_url}}"],
+              "path": ["api", "add_menu_to_panier"]
+            }
+          }
+        },
+        {
+          "name": "Edit Panier Menu",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantite\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/edit_panier_menu/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "edit_panier_menu", "1"]
+            }
+          }
+        },
+        {
+          "name": "Remove Menu from Panier",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/remove_menu_from_panier/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "remove_menu_from_panier", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Commande-Menu Relations",
+      "item": [
+        {
+          "name": "Get Commande Menus",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/get_commande_menus/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "get_commande_menus", "1"]
+            }
+          }
+        },
+        {
+          "name": "Add Menu to Commande",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"commande_id\": 1,\n  \"menu_id\": 1,\n  \"quantite\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/add_menu_to_commande",
+              "host": ["{{base_url}}"],
+              "path": ["api", "add_menu_to_commande"]
+            }
+          }
+        },
+        {
+          "name": "Edit Commande Menu",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quantite\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/edit_commande_menu/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "edit_commande_menu", "1"]
+            }
+          }
+        },
+        {
+          "name": "Remove Menu from Commande",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/remove_menu_from_commande/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "remove_menu_from_commande", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000",
+      "type": "string"
+    }
+  ]
+}

@@ -14,74 +14,57 @@ Route::get('/test', function () {
     return ['message' => 'API OK'];
 });
 
-Route::get('users', [UserController::class, 'index']);
-Route::post('users', [UserController::class, 'store']);
-Route::get('users/{id}', [UserController::class, 'show']);
-Route::put('users/{id}', [UserController::class, 'update']);
-Route::delete('users/{id}', [UserController::class, 'destroy']);
+Route::get('get_all_users', [UserController::class, 'index']);
+Route::post('add_user', [UserController::class, 'store']);
+Route::get('get_user/{id}', [UserController::class, 'show']);
+Route::put('edit_user/{id}', [UserController::class, 'update']);
+Route::delete('delete_user/{id}', [UserController::class, 'destroy']);
 
 Route::get('get_all_admins', [AdminController::class, 'index']);
-Route::post('add_admins', [AdminController::class, 'store']);
-Route::get('get_admins/{id}', [AdminController::class, 'show']);
-Route::put('edit_admins/{id}', [AdminController::class, 'update']);
-Route::delete('delete_admins/{id}', [AdminController::class, 'destroy']);
+Route::post('add_admin', [AdminController::class, 'store']);
+Route::get('get_admin/{id}', [AdminController::class, 'show']);
+Route::put('edit_admin/{id}', [AdminController::class, 'update']);
+Route::delete('delete_admin/{id}', [AdminController::class, 'destroy']);
+
+Route::get('get_panier_menus/{id}', [PanierMenuController::class, 'index']);
+Route::post('add_menu_to_panier', [PanierMenuController::class, 'store']);
+Route::put('edit_panier_menu/{id}', [PanierMenuController::class, 'update']);
+Route::delete('remove_menu_from_panier/{id}', [PanierMenuController::class, 'destroy']);
+Route::delete('remove_menu_from_panier_by_ids', [PanierMenuController::class, 'removeMenuFromPanier']);
 
 
-Route::get('panier/{id}/menus', [PanierMenuController::class, 'index']);
-Route::post('panier/menu', [PanierMenuController::class, 'store']);
-Route::put('panier/menu/{id}', [PanierMenuController::class, 'update']);
-Route::delete('panier/menu/{id}', [PanierMenuController::class, 'destroy']);
+Route::get('get_commande_menus/{id}', [CommandeMenuController::class, 'index']);
+Route::post('add_menu_to_commande', [CommandeMenuController::class, 'store']);
+Route::put('edit_commande_menu/{id}', [CommandeMenuController::class, 'update']);
+Route::delete('remove_menu_from_commande/{id}', [CommandeMenuController::class, 'destroy']);
 
+Route::get('get_all_commandes', [CommandeController::class, 'index']);
+Route::post('add_commande', [CommandeController::class, 'store']);
+Route::get('get_commande/{id}', [CommandeController::class, 'show']);
+Route::put('edit_commande/{id}', [CommandeController::class, 'update']);
+Route::delete('delete_commande/{id}', [CommandeController::class, 'destroy']);
 
-Route::get('commande/{id}/menus', [CommandeMenuController::class, 'index']);
-Route::post('commande/menu', [CommandeMenuController::class, 'store']);
-Route::put('commande/menu/{id}', [CommandeMenuController::class, 'update']);
-Route::delete('commande/menu/{id}', [CommandeMenuController::class, 'destroy']);
+Route::get('get_all_paniers', [PanierController::class, 'index']);
+Route::post('add_panier', [PanierController::class, 'store']);
+Route::get('get_panier/{id}', [PanierController::class, 'show']);
+Route::put('edit_panier/{id}', [PanierController::class, 'update']);
+Route::delete('delete_panier/{id}', [PanierController::class, 'destroy']);
 
-Route::get('commandes', [CommandeController::class, 'index']);
-Route::post('commandes', [CommandeController::class, 'store']);
-Route::get('commandes/{id}', [CommandeController::class, 'show']);
-Route::put('commandes/{id}', [CommandeController::class, 'update']);
-Route::delete('commandes/{id}', [CommandeController::class, 'destroy']);
+Route::get('get_all_categories', [CategorieController::class, 'index']);
+Route::post('add_categorie', [CategorieController::class, 'store']);
+Route::get('get_categorie/{id}', [CategorieController::class, 'show']);
+Route::put('edit_categorie/{id}', [CategorieController::class, 'update']);
+Route::delete('delete_categorie/{id}', [CategorieController::class, 'destroy']);
 
+Route::get('get_all_menus', [MenuController::class, 'index']);
+Route::post('add_menu', [MenuController::class, 'store']);
+Route::get('get_menu/{id}', [MenuController::class, 'show']);
+Route::put('edit_menu/{id}', [MenuController::class, 'update']);
+Route::delete('delete_menu/{id}', [MenuController::class, 'destroy']);
 
-
-
-Route::get('paniers', [PanierController::class, 'index']);
-Route::post('paniers', [PanierController::class, 'store']);
-Route::get('paniers/{id}', [PanierController::class, 'show']);
-Route::put('paniers/{id}', [PanierController::class, 'update']);
-Route::delete('paniers/{id}', [PanierController::class, 'destroy']);
-
-Route::get('categories', [CategorieController::class, 'index']);
-Route::post('categories', [CategorieController::class, 'store']);
-Route::get('categories/{id}', [CategorieController::class, 'show']);
-Route::put('categories/{id}', [CategorieController::class, 'update']);
-Route::delete('categories/{id}', [CategorieController::class, 'destroy']);
-
-Route::get('menus', [MenuController::class, 'index']);
-Route::post('menus', [MenuController::class, 'store']);     
-route::get('menus/{id}', [MenuController::class, 'show']);
-Route::put('menus/{id}', [MenuController::class, 'update']);
-Route::delete('menus/{id}', [MenuController::class, 'destroy']);
-
-route::get('paiements', [PaiementController::class, 'index']);
-route::post('paiements', [PaiementController::class, 'store']); 
-route::get('paiements/{id}', [PaiementController::class, 'show']);
-route::put('paiements/{id}', [PaiementController::class, 'update']);        
-route::delete('paiements/{id}', [PaiementController::class, 'destroy']);
-
-
-Route::apiResource('categories', CategorieController::class);
-Route::apiResource('menus', MenuController::class);
-Route::apiResource('commandes', CommandeController::class);
-Route::apiResource('paiements', PaiementController::class);
-Route::apiResource('admins', AdminController::class);
-Route::apiResource('users', UserController::class);
-Route::apiResource('paniers', PanierController::class);
-route::apiResource('paiements', PaiementController::class);
-Route::apiResource('panier-menu', PanierMenuController::class)->only(['store','update','destroy','index']);
-Route::apiResource('commande-menu', CommandeMenuController::class)->only(['store','update','destroy','index']);
-
-
+Route::get('get_all_paiements', [PaiementController::class, 'index']);
+Route::post('add_paiement', [PaiementController::class, 'store']);
+Route::get('get_paiement/{id}', [PaiementController::class, 'show']);
+Route::put('edit_paiement/{id}', [PaiementController::class, 'update']);
+Route::delete('delete_paiement/{id}', [PaiementController::class, 'destroy']);
 

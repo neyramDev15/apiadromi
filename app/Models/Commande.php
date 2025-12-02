@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Commande extends Model
 {
@@ -10,7 +11,7 @@ class Commande extends Model
     protected $fillable = [
         'user_id',
         'date_commande',
-        'status',
+        'statut',
         'total',
     ];
     public function user()
@@ -19,6 +20,11 @@ class Commande extends Model
     }
     public function menus()
     {
-        return $this->belongsToMany(Menu::class, 'Commande_menu')->withPivot('quantite')->withTimestamps();
-    }                               
+        return $this->belongsToMany(Menu::class, 'commande_menu')->withPivot('quantite')->withTimestamps();
+    }
+    
+    public function paiement()
+    {
+        return $this->hasOne(Paiement::class);
+    }
 }

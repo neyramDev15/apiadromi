@@ -17,22 +17,35 @@ class PaiementController extends Controller
     // Créer un nouveau paiement
     public function store(Request $request)
     {
-        // Validation des données
-        $request->validate([
-            'commande_id' => 'required|exists:commandes,id',
-            'montant' => 'required|numeric',
-            'methode' => 'required|string|max:255',
-            'statut' => 'required|string|max:255'
-        ]);
+        try {
+            // Validation des données
+            $request->validate([
+                'commande_id' => 'required|exists:commandes,id',
+                'montant' => 'required|numeric|min:0',
+                'methode_paiement' => 'required|string|max:255',
+                'status' => 'required|string|max:255'
+            ]);
 
-        $paiement = Paiement::create([
-            'commande_id' => $request->commande_id,
-            'montant' => $request->montant,
-            'methode' => $request->mode_paiement,
-            'statut' => $request->statut
-        ]);
+            $paiement = Paiement::create([
+                'commande_id' => $request->commande_id,
+                'montant' => $request->montant,
+                'methode_paiement' => $request->methode_paiement,
+                'status' => $request->status
+            ]);
 
-        return response()->json($paiement, 201);
+            return response()->json([
+                'success' => true,
+                'message' => 'Paiement créé avec succès',
+                'data' => $paiement->load('commande')
+            ], 201);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la création du paiement',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     // Afficher un paiement spécifique
@@ -55,8 +68,8 @@ class PaiementController extends Controller
 
         $request->validate([
             'montant' => 'sometimes|numeric',
-            'methode' => 'sometimes|string|max:255',
-            'statut' => 'sometimes|string|max:255'
+            'methode_paiement' => 'sometimes|string|max:255',
+            'status' => 'sometimes|string|max:255'
         ]);
 
         $paiement->update($request->all());

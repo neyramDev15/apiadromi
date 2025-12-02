@@ -89,14 +89,84 @@ class PanierMenuController extends Controller
      */
     public function destroy($id)
     {
-        $ligne = DB::table('panier_menu')->where('id', $id)->first();
+        try {
+            // D'abord essayer par l'ID de la table pivot
+            $ligne = DB::table('panier_menu')->where('id', $id)->first();
+
+            if (!$ligne) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Élément non trouvé dans le panier',
+                    'debug' => "Aucun enregistrement trouvé avec l'ID $id dans panier_menu"
+                ], 404);
+            }
+
+            // Récupérer les infos avant suppression pour le message
+            $panier = Panier::find($ligne->panier_id);
+            $menu = Menu::find($ligne->menu_id);
+
+            // Supprimer l'enregistrement
+            DB::table('panier_menu')->where('id', $id)->delete();
+
+            // Recalculer le total du panier
+            if ($panier) {
+                $panier->load('menus');
+                $total = 0;
+                foreach ($panier->menus as $menu_item) {
+                    $total += $menu_item->prix * $menu_item->pivot->quantite;
+                }
+                $panier->update(['total' => $total]);
+            }
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Menu retiré du panier avec succès',
+                'data' => [
+                    'panier_id' => $ligne->panier_id,
+                    'menu_supprime' => $menu ? $menu->nom : 'Menu ID ' . $ligne->menu_id,
+                    'quantite_supprimee' => $ligne->quantite
+                ]
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Erreur lors de la suppression',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    /**
+     * Supprimer un menu spécifique d'un panier spécifique
+     */
+    public function removeMenuFromPanier(Request $request)
+    {
+        $request->validate([
+            'panier_id' => 'required|exists:paniers,id',
+            'menu_id' => 'required|exists:menus,id'
+        ]);
+
+        $ligne = DB::table('panier_menu')
+            ->where('panier_id', $request->panier_id)
+            ->where('menu_id', $request->menu_id)
+            ->first();
 
         if (!$ligne) {
-            return response()->json(['message' => 'Élément non trouvé'], 404);
+            return response()->json([
+                'success' => false,
+                'message' => 'Ce menu n\'est pas dans ce panier'
+            ], 404);
         }
 
-        DB::table('panier_menu')->where('id', $id)->delete();
+        DB::table('panier_menu')
+            ->where('panier_id', $request->panier_id)
+            ->where('menu_id', $request->menu_id)
+            ->delete();
 
-        return response()->json(['message' => 'Menu retiré du panier']);
+        return response()->json([
+            'success' => true,
+            'message' => 'Menu retiré du panier'
+        ]);
     }
 }

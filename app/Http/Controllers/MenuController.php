@@ -14,7 +14,7 @@ class MenuController extends Controller
     public function index()
     {
         //with permet de recuperer les categories de chaq menu
-         $menus = Menu::with('categories')->get();
+        $menus = Menu::with('categorie')->get();
        return response()->json([
         'success' => true,
         'data' => $menus
@@ -31,7 +31,7 @@ class MenuController extends Controller
             'nom' => 'required|string|max:255',
             'description' => 'required|string|max:255',
             'image' => 'required|string|max:255',
-            'prix' => 'required|string|max:20',
+            'prix' => 'required|numeric|min:0',
         ]);
 
         
@@ -57,7 +57,7 @@ class MenuController extends Controller
      */
     public function show(string $id)
     {
-         $menu =Menu::with('categories')->find($id);
+        $menu = Menu::with('categorie')->find($id);
         if(!$menu){
             return response()->json([
                 'success' => false,

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Commandes;
+use App\Models\Commande;
 use App\Models\Menu;
 
 class CommandeController extends Controller
@@ -14,74 +14,50 @@ class CommandeController extends Controller
     public function index()
     {
         
-    return response()->json(Commandes::with(['menus','user','paiement'])->get());
+    return response()->json(Commande::with(['menus','user','paiement'])->get());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $commandes = Commandes::create([
-            'date_commande' => $request->date_commande,
-            'statut' => $request->statut,
-            'total' => $request->total,
-            'user_id' => $request->user_id,
-        ]);
-        $commandes->menu()->attach($request->menu_ids);
-        return response()->json([
-            'success' => true,
-            'data' => $commandes
-        ]);
-    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $resquest->validate([
-            'date_commande' => 'required|date',
-            'statut' => 'required|string|max:255',
-            'total' => 'required|numeric',
+        $request->validate([
             'user_id' => 'required|exists:users,id',
-            'menu_ids' => 'required|array',
-            'menu_ids.*' => 'exists:menus,id',
+            'menus' => 'required|array',
+            'menus.*.menu_id' => 'required|exists:menus,id',
+            'menus.*.quantite' => 'required|integer|min:1',
         ]);
         $total = 0;
-        foreach ($request->menu_ids as $menu_id) {
-            $menu = Menu::find($menu_id);
-            $total += $menu->prix *item['quantite'];
-    }
-    $commandes = Commandes::create([
-        'user_id' => $request->user_id,
-        'date_commande'=>now(),
-        'statut'=>'en attente',
-        'total'=>$total,
-    ]);
-    foreach ($request->menus as $item) {
-        $menu = Menu::find($item['menu_id']);
-        $commandes->menus()->attach($item['id'],
-
-        [
-            'quantite' => $item['quantite'],
-            'prix_unitaire' => $menu->prix
+        foreach ($request->menus as $item) {
+            $menu = Menu::find($item['menu_id']);
+            $total += $menu->prix * $item['quantite'];
+        }
         
-        ]
-    );
-
-    }
-    return response()->json([
-        'success' => true,
-        'data' => $commandes
-    ],201);
+        $commande = Commande::create([
+            'user_id' => $request->user_id,
+            'date_commande' => now(),
+            'statut' => 'en attente',
+            'total' => $total,
+        ]);
+        
+        foreach ($request->menus as $item) {
+            $commande->menus()->attach($item['menu_id'], [
+                'quantite' => $item['quantite']
+            ]);
+        }
+        return response()->json([
+            'success' => true,
+            'data' => $commande->load(['menus', 'user'])
+        ], 201);
     }
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        $commande = Commandes::with(['menus','user','paiement'])->find($id);
+        $commande = Commande::with(['menus','user','paiement'])->find($id);
         if (!$commande) {
             return response()->json([
                 'success' => false,
@@ -107,8 +83,8 @@ class CommandeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $coommande = Commandes::find($id);
-        if (!$coommande) {
+        $commande = Commande::find($id);
+        if (!$commande) {
             return response()->json([
                 'success' => false,
                 'message' => 'Commande introuvable'
@@ -117,9 +93,9 @@ class CommandeController extends Controller
     $request->validate([
         'statut' => 'nullable|string|max:255',
     ]);
-    $commande->update([
-        'statut' => $request->statut ?? $commande->statut,
-    ]);
+        $commande->update([
+            'statut' => $request->statut ?? $commande->statut,
+        ]);
     return response()->json([
         'success' => true,
         'message' => 'Commande mise à jour avec succès',
@@ -132,7 +108,7 @@ class CommandeController extends Controller
      */
     public function destroy(string $id)
     {
-        $commande = Commandes::find($id);
+        $commande = Commande::find($id);
         if (!$commande) {
             return response()->json([
                 'success' => false,

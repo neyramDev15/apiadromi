@@ -37,7 +37,7 @@ class UserController extends Controller
             'prenom' => $request->prenom,
             'telephone' => $request->telephone,
             'email' => $request->email,
-            'mot_de_passe' => Hash::make($request->password),
+            'mot_de_passe' => Hash::make($request->mot_de_passe),
         ]);
         return response()->json([
             'success' => true,
@@ -70,7 +70,7 @@ class UserController extends Controller
         }
 
         $request->validate([
-            'non' => 'nullable|string|max:255',
+            'nom' => 'nullable|string|max:255',
             'prenom' => 'nullable|string|max:255',
             'telephone' => 'nullable|string|max:20',
             'email' => 'nullable|email|unique:users,email,' . $id,
@@ -80,7 +80,6 @@ class UserController extends Controller
         if ($request->nom) $user->nom = $request->nom;
         if ($request->prenom) $user->prenom = $request->prenom;
         if ($request->email) $user->email = $request->email;
-        if ($request->password) $user->password = Hash::make($request->password);
         if ($request->mot_de_passe) $user->mot_de_passe = Hash::make($request->mot_de_passe);
         if ($request->telephone) $user->telephone = $request->telephone;
 

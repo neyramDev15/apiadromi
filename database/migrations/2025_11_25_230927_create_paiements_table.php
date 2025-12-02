@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('paiements', function (Blueprint $table) {
             $table->id();
-            $table->integer('mantant');
-            $table->enum('methode', ['yas', 'flooz']);
-            $table->enum('statut', ['en_attente', 'complet', 'echoue']);
+            $table->decimal('montant', 10, 2);
+            $table->string('methode_paiement');
+            $table->string('status');
             $table->foreignId('commande_id')->constrained('commandes')->onDelete('cascade');
             $table->timestamps();
         });

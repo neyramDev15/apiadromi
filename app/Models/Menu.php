@@ -15,7 +15,7 @@ class Menu extends Model
         'prix',
         'image',
     ];
-    public function categories()
+    public function categorie()
     {
         return $this->belongsTo(Categorie::class);
     }

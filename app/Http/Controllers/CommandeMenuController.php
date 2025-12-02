@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Commandes;
+use App\Models\Commande;
 use App\Models\Menu;
-use illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 
 class CommandeMenuController extends Controller
 {
