@@ -15,10 +15,10 @@ class MenuController extends Controller
     {
         //with permet de recuperer les categories de chaq menu
         $menus = Menu::with('categorie')->get();
-       return response()->json([
-        'success' => true,
-        'data' => $menus
-       ]) ;
+        return response()->json([
+            'success' => true,
+            'data' => $menus
+        ]);
     }
 
     /**
@@ -44,9 +44,9 @@ class MenuController extends Controller
         ]);
         return response()->json([
             'success' => true,
-            'message' => 'menu creer',
+            'message' => 'Menu créé avec succès',
             'data' => $menus
-           ]) ;
+        ], 201);
     }
 
    
@@ -62,12 +62,12 @@ class MenuController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Menu introuvable'
-               ]) ;
+            ], 404);
         }   
         return response()->json([
             'success' => true,
             'data' => $menu
-           ]) ; 
+        ]); 
     }
 
     /**
@@ -88,7 +88,7 @@ class MenuController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Menu introuvable'
-               ],404) ;
+            ], 404);
         }
         //validation
         $request->validate([
@@ -101,8 +101,9 @@ class MenuController extends Controller
         $menu->update($request->all());
         return response()->json([
             'success' => true,
+            'message' => 'Menu mis à jour avec succès',
             'data' => $menu
-           ]) ;
+        ]);
     }
 
     /**
@@ -115,12 +116,12 @@ class MenuController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Menu introuvable'
-               ],404) ;
+            ], 404);
         }
         $menu->delete();
         return response()->json([
             'success' => true,
             'message' => 'Menu supprimé avec succès'
-           ]) ;
+        ]);
     }
 }

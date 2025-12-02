@@ -14,7 +14,10 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return response()->json($users);
+        return response()->json([
+            'success' => true,
+            'data' => $users
+        ]);
     }
 
     /**
@@ -41,7 +44,8 @@ class UserController extends Controller
         ]);
         return response()->json([
             'success' => true,
-            'message' => 'Utilisateur créé'
+            'message' => 'Utilisateur créé avec succès',
+            'data' => $user
         ], 201);
 
     
@@ -54,9 +58,15 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if (!$user) {
-            return response()->json(['message' => 'Utilisateur non trouvé'], 404);
+            return response()->json([
+                'success' => false,
+                'message' => 'Utilisateur non trouvé'
+            ], 404);
         }
-        return response()->json($user);
+        return response()->json([
+            'success' => true,
+            'data' => $user
+        ]);
     }
 
     /**
@@ -66,7 +76,10 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if (!$user) {
-            return response()->json(['message' => 'Utilisateur non trouvé'], 404);
+            return response()->json([
+                'success' => false,
+                'message' => 'Utilisateur non trouvé'
+            ], 404);
         }
 
         $request->validate([
@@ -85,7 +98,11 @@ class UserController extends Controller
 
         $user->save();
 
-        return response()->json(['message' => 'Utilisateur mis à jour', 'user' => $user]);
+        return response()->json([
+            'success' => true,
+            'message' => 'Utilisateur mis à jour avec succès',
+            'data' => $user
+        ]);
     }
 
     /**
@@ -95,10 +112,16 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if (!$user) {
-            return response()->json(['message' => 'Utilisateur non trouvé'], 404);
+            return response()->json([
+                'success' => false,
+                'message' => 'Utilisateur non trouvé'
+            ], 404);
         }
 
         $user->delete();
-        return response()->json(['message' => 'Utilisateur supprimé']);
+        return response()->json([
+            'success' => true,
+            'message' => 'Utilisateur supprimé avec succès'
+        ]);
     }
 }

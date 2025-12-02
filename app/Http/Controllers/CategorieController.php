@@ -12,7 +12,11 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        return response()->json(Categorie::all());
+        $categories = Categorie::all();
+        return response()->json([
+            'success' => true,
+            'data' => $categories
+        ]);
     }
 
     /**
@@ -34,6 +38,7 @@ class CategorieController extends Controller
 
         return response()->json([
             'success' => true,
+            'message' => 'Catégorie créée avec succès',
             'data' => $categorie
         ], 201);
     }
@@ -81,6 +86,7 @@ class CategorieController extends Controller
 
         return response()->json([
             'success' => true,
+            'message' => 'Catégorie mise à jour avec succès',
             'data' => $categorie
         ]);
     }

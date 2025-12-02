@@ -1,59 +1,249 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🍕 API Adromi - Système de Gestion de Restaurant
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="https://img.shields.io/badge/Laravel-12-red?style=for-the-badge&logo=laravel" alt="Laravel 12">
+  <img src="https://img.shields.io/badge/PHP-8.2+-blue?style=for-the-badge&logo=php" alt="PHP 8.2+">
+  <img src="https://img.shields.io/badge/MySQL-Database-orange?style=for-the-badge&logo=mysql" alt="MySQL">
+  <img src="https://img.shields.io/badge/API-REST-green?style=for-the-badge" alt="REST API">
 </p>
 
-## About Laravel
+## 📋 Description
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**API Adromi** est une API REST complète pour la gestion d'un restaurant/service de livraison. Elle permet aux clients de parcourir un menu, gérer leur panier, passer des commandes et effectuer des paiements.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## ✨ Fonctionnalités
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- 👥 **Gestion des utilisateurs** (clients et administrateurs)
+- 📂 **Catégories de menus** organisées
+- 🍕 **Catalogue de plats** avec prix et descriptions
+- 🛒 **Système de panier** flexible (un ou plusieurs menus)
+- 📦 **Gestion des commandes** complète
+- 💳 **Système de paiement** intégré
+- 🔗 **Relations complexes** entre entités
 
-## Learning Laravel
+## 🏗️ Architecture
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Entités principales
+- **Users** - Clients du restaurant
+- **Admins** - Gestionnaires avec rôles
+- **Categories** - Catégories de plats
+- **Menus** - Plats disponibles
+- **Paniers** - Paniers d'achat temporaires
+- **Commandes** - Commandes finalisées
+- **Paiements** - Transactions financières
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Tables de liaison
+- **panier_menu** - Contenu des paniers avec quantités
+- **commande_menu** - Contenu des commandes avec quantités
 
-## Laravel Sponsors
+## 🚀 Installation
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Prérequis
+- PHP 8.2+
+- Composer
+- MySQL
+- Node.js (pour les assets frontend)
 
-### Premium Partners
+### Étapes d'installation
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1. **Cloner le projet**
+```bash
+git clone <repository-url>
+cd apiadromi
+```
 
-## Contributing
+2. **Installer les dépendances**
+```bash
+composer install
+npm install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. **Configuration de l'environnement**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-## Code of Conduct
+4. **Configuration de la base de données**
+Modifier le fichier `.env` :
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=adromidb
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+5. **Migrations**
+```bash
+php artisan migrate
+```
 
-## Security Vulnerabilities
+6. **Lancer le serveur**
+```bash
+php artisan serve
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+L'API sera accessible sur `http://127.0.0.1:8000`
 
-## License
+## 📡 Utilisation de l'API
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Base URL
+```
+http://127.0.0.1:8000/api
+```
+
+### Exemples d'utilisation
+
+#### Créer un utilisateur
+```http
+POST /api/add_user
+Content-Type: application/json
+
+{
+  "nom": "Doe",
+  "prenom": "John",
+  "telephone": "70658846",
+  "email": "john.doe@example.com",
+  "mot_de_passe": "password123"
+}
+```
+
+#### Ajouter des menus au panier
+```http
+POST /api/add_panier
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "menus": [
+    {
+      "menu_id": 1,
+      "quantite": 2
+    },
+    {
+      "menu_id": 2,
+      "quantite": 1
+    }
+  ]
+}
+```
+
+#### Créer une commande
+```http
+POST /api/add_commande
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "menus": [
+    {
+      "menu_id": 1,
+      "quantite": 2
+    }
+  ]
+}
+```
+
+## 📚 Documentation
+
+- **[Architecture détaillée](docs/ARCHITECTURE.md)** - Relations entre tables et flux de données
+- **[Endpoints API](docs/API_ENDPOINTS.md)** - Documentation complète de tous les endpoints
+
+## 🛠️ Technologies utilisées
+
+- **Framework** : Laravel 12
+- **PHP** : 8.2+
+- **Base de données** : MySQL
+- **ORM** : Eloquent
+- **Architecture** : REST API
+- **Frontend** : Vite + TailwindCSS (minimal)
+
+## 📊 Structure de la base de données
+
+```
+users (1) ←→ (∞) paniers ←→ (∞) menus
+users (1) ←→ (∞) commandes ←→ (∞) menus
+categories (1) ←→ (∞) menus
+commandes (1) ←→ (1) paiements
+```
+
+## 🔧 Développement
+
+### Commandes utiles
+
+```bash
+# Vérifier la syntaxe PHP
+php -l app/Http/Controllers/NomController.php
+
+# Lancer les migrations
+php artisan migrate
+
+# Rollback des migrations
+php artisan migrate:rollback
+
+# Vérifier le statut des migrations
+php artisan migrate:status
+
+# Accéder à Tinker (REPL Laravel)
+php artisan tinker
+```
+
+### Tests avec Tinker
+
+```php
+// Compter les utilisateurs
+User::count()
+
+// Créer un utilisateur de test
+User::create([
+    'nom' => 'Test',
+    'prenom' => 'User',
+    'telephone' => '70123456',
+    'email' => 'test@test.com',
+    'mot_de_passe' => bcrypt('password')
+]);
+
+// Vérifier les relations
+$user = User::with(['paniers', 'commandes'])->first();
+```
+
+## 🎯 Fonctionnalités avancées
+
+### Panier flexible
+- Support pour ajouter un seul menu ou plusieurs menus en une fois
+- Calcul automatique du total
+- Gestion des quantités
+
+### Gestion d'erreurs
+- Validation complète des données
+- Messages d'erreur détaillés
+- Gestion des exceptions
+
+### Relations optimisées
+- Chargement eager des relations
+- Tables pivot avec données supplémentaires (quantités)
+- Intégrité référentielle
+
+## 🤝 Contribution
+
+1. Fork le projet
+2. Créer une branche pour votre fonctionnalité
+3. Commit vos changements
+4. Push vers la branche
+5. Ouvrir une Pull Request
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+## 📞 Support
+
+Pour toute question ou problème, n'hésitez pas à ouvrir une issue sur GitHub.
+
+---
+
+<p align="center">
+  Développé avec ❤️ pour la gestion de restaurants
+</p>
